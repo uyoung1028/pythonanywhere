@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    <h1><a href='/todos/create'>할 일 추가</a></h1>
+    {% for todo in todos %}
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col">
+                    <h3>{{todo.todo}}</h3>
+                    <h5>{{todo.deadline.strftime("%Y년 %m월 %d일")}}</h5>
+                    <!---->
+                </div>
+                <div class="col">
+                    <a href='/todos/{{todo.id}}/upgrade' class='btn btn-primary'>수정</a>
+                    <a href='/todos/{{todo.id}}/delete' class='btn btn-success' onclick='return confirm('삭제하시겠습니까?')'>삭제</a>
+                    
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{%endblock%}
